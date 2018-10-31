@@ -1,4 +1,4 @@
-package main
+package gx0re
 
 import (
 	"fmt"
