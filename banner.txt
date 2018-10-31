@@ -1,0 +1,18 @@
+
+        GGGGGGGGGGGGG                                          000000000     RRRRRRRRRRRRRRRRR                    EEEEEEEEEEEEEEEEEEEEEE
+     GGG::::::::::::G                                        00:::::::::00   R::::::::::::::::R                   E::::::::::::::::::::E
+   GG:::::::::::::::G                                      00:::::::::::::00 R::::::RRRRRR:::::R                  E::::::::::::::::::::E
+  G:::::GGGGGGGG::::G                                     0:::::::000:::::::0RR:::::R     R:::::R                 EE::::::EEEEEEEEE::::E
+ G:::::G       GGGGGG                 xxxxxxx      xxxxxxx0::::::0   0::::::0  R::::R     R:::::R                   E:::::E       EEEEEE
+G:::::G                                x:::::x    x:::::x 0:::::0     0:::::0  R::::R     R:::::R                   E:::::E
+G:::::G                                 x:::::x  x:::::x  0:::::0     0:::::0  R::::RRRRRR:::::R                    E::::::EEEEEEEEEE
+G:::::G    GGGGGGGGGG ---------------    x:::::xx:::::x   0:::::0 000 0:::::0  R:::::::::::::RR   ---------------   E:::::::::::::::E
+G:::::G    G::::::::G -:::::::::::::-     x::::::::::x    0:::::0 000 0:::::0  R::::RRRRRR:::::R  -:::::::::::::-   E:::::::::::::::E
+G:::::G    GGGGG::::G ---------------      x::::::::x     0:::::0     0:::::0  R::::R     R:::::R ---------------   E::::::EEEEEEEEEE
+G:::::G        G::::G                      x::::::::x     0:::::0     0:::::0  R::::R     R:::::R                   E:::::E
+ G:::::G       G::::G                     x::::::::::x    0::::::0   0::::::0  R::::R     R:::::R                   E:::::E       EEEEEE
+  G:::::GGGGGGGG::::G                    x:::::xx:::::x   0:::::::000:::::::0RR:::::R     R:::::R                 EE::::::EEEEEEEE:::::E
+   GG:::::::::::::::G                   x:::::x  x:::::x   00:::::::::::::00 R::::::R     R:::::R                 E::::::::::::::::::::E
+     GGG::::::GGG:::G                  x:::::x    x:::::x    00:::::::::00   R::::::R     R:::::R                 E::::::::::::::::::::E
+        GGGGGG   GGGG                 xxxxxxx      xxxxxxx     000000000     RRRRRRRR     RRRRRRR                 EEEEEEEEEEEEEEEEEEEEEE
+
