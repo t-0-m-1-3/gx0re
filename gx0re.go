@@ -136,6 +136,7 @@ func main() {
 			os.Exit(2)
 		}
 	}
+
 	// pe, err := pefile.NewPEFile(args[0])
 	// fmt.Println("The File in question is: \n" + pe.Filename)
 
