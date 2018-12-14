@@ -61,32 +61,32 @@ func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
 		fmt.Println("[+] using the testing malware IRCBot.exe\n\n\t")
-		pe, err := pefile.NewPEFile("malware_data_science/ch1/ircbot.exe")
+		pe, err := pefile.NewPEFile("./malware_data_science/ch1/ircbot.exe")
 		fmt.Println("[+] The File in question is: \n" + "[+] \t" + pe.Filename)
 
-		for _, e := range pe.Errors {
-			fmt.Println("[+] Parser warning: \n\t", e)
+		if err != nil {
+			for _, e := range pe.Errors {
+				fmt.Println("[+] Parser warning: \n\t", e)
+			}
 		}
 		fmt.Println("[+] " + pe.Filename + " has been loaded successfully ")
-		//
-		// 	//The code Below will be for handling the errors after testing
-		// 	// fmt.Println("Please enter a piece of software to analyze \n")
-		// 	// os.Exit(-1)
+
 		if err != nil {
 			fmt.Println(" There was a problem with the file, revert to the python script")
 			fmt.Println(" There was an error: %v", err)
 			os.Exit(2)
 		}
 
-	}
-	pe, err := pefile.NewPEFile(args[0])
-	if err != nil {
-		fmt.Println(" There was a problem with the file, revert to the python script")
-		fmt.Println(" There was an error: %v", err)
-		os.Exit(2)
-	}
-	fmt.Println("The File in question is: \n" + pe.Filename)
+	} else {
+		pe, err := pefile.NewPEFile(args[0])
+		if err != nil {
+			fmt.Println(" There was a problem with the file, revert to the python script")
+			fmt.Println(" There was an error: %v", err)
+			os.Exit(2)
+		}
+		fmt.Println("The File in question is: \n" + pe.Filename)
 
-	malwareDisassembler.Disassembler(pe)
-	malwareDisassembler.StringsWrapper(pe)
+		malwareDisassembler.Disassembler(pe)
+		malwareDisassembler.StringsWrapper(pe)
+	}
 }
