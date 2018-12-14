@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
-	"os/exec"
+	// "log" // potential remove for stringsWrapper
+	// "os/exec" // potential remove for stringsWrapper
 
 	pefile "github.com/awsaba/pefile-go"
 	malwareDisassembler "github.com/t-0-m-1-3/malwareDisassembler"
@@ -57,10 +57,10 @@ func main() {
 	fmt.Print("...........................................................\n")
 	fmt.Print("...........................................................\n")
 
-	fmt.Println("\tChoose an Option to perform the type of analysis you need:\n")
+	fmt.Println("\tChoose an Option to perform the type of analysis you need:\n\n\t")
 	args := os.Args[1:]
 	if len(args) == 0 {
-		fmt.Println("[+] using the testing malware IRCBot.exe\n\n")
+		fmt.Println("[+] using the testing malware IRCBot.exe\n\n\t")
 		pe, err := pefile.NewPEFile("malware_data_science/ch1/ircbot.exe")
 		fmt.Println("[+] The File in question is: \n" + "[+] \t" + pe.Filename)
 
@@ -68,35 +68,25 @@ func main() {
 			fmt.Println("[+] Parser warning: \n\t", e)
 		}
 		fmt.Println("[+] " + pe.Filename + " has been loaded successfully ")
-
-		//Strings code start
-
-		fmt.Println("[+] Running strings command to look for generic string indicators\n\n")
-		// cmd := exec.Command("strings", "--help", "|", "grep", "help")
-		// cmd := exec.Command("strings", pe.Filename, "|", "grep", "DOWNLOAD")
-		// cmd := exec.Command("strings", "malware_data_science/ch1/ircbot.exe", "|", "grep", "DOWNLOAD")
-		cmd := exec.Command("strings", "malware_data_science/ch1/ircbot.exe")
-		stdoutStderr, err := cmd.CombinedOutput()
-		if err != nil {
-			fmt.Println("[-] I made a mistake ")
-			log.Fatal(err)
-		}
-		fmt.Printf("%s\n", stdoutStderr)
-
-		// strings code end?
-
-		//The code Below will be for handling the errors after testing
-		// fmt.Println("Please enter a piece of software to analyze \n")
-		// os.Exit(-1)
+		//
+		// 	//The code Below will be for handling the errors after testing
+		// 	// fmt.Println("Please enter a piece of software to analyze \n")
+		// 	// os.Exit(-1)
 		if err != nil {
 			fmt.Println(" There was a problem with the file, revert to the python script")
-			fmt.Println(err)
-			fmt.Println("fuck my life")
+			fmt.Println(" There was an error: %v", err)
 			os.Exit(2)
 		}
-	}
-	malwareDisassembler.Disassembler()
-	// pe, err := pefile.NewPEFile(args[0])
-	// fmt.Println("The File in question is: \n" + pe.Filename)
 
+	}
+	pe, err := pefile.NewPEFile(args[0])
+	if err != nil {
+		fmt.Println(" There was a problem with the file, revert to the python script")
+		fmt.Println(" There was an error: %v", err)
+		os.Exit(2)
+	}
+	fmt.Println("The File in question is: \n" + pe.Filename)
+
+	malwareDisassembler.Disassembler(pe)
+	malwareDisassembler.StringsWrapper(pe)
 }
