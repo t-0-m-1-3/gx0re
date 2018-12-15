@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	// "log" // potential remove for stringsWrapper
-	// "os/exec" // potential remove for stringsWrapper
 
 	pefile "github.com/awsaba/pefile-go"
 	malwareDisassembler "github.com/t-0-m-1-3/malwareDisassembler"
@@ -61,32 +59,27 @@ func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
 		fmt.Println("[+] using the testing malware IRCBot.exe\n\n\t")
-		pe, err := pefile.NewPEFile("./malware_data_science/ch1/ircbot.exe")
-		fmt.Println("[+] The File in question is: \n" + "[+] \t" + pe.Filename)
+		pe, err := pefile.NewPEFile("malware_data_science/ch1/ircbot.exe")
+		fmt.Println(" [=] " + pe.Filename + " Has been Loaded")
 
 		if err != nil {
-			for _, e := range pe.Errors {
-				fmt.Println("[+] Parser warning: \n\t", e)
-			}
+			fmt.Println(" There was a problem loading IRCBot, revert to the python script")
+			fmt.Println(" There was an error: %v", err)
+			os.Exit(2)
 		}
+
+		// if err != nil {
+		// 	for _, e := range pe.Errors {
+		// 		fmt.Println("[+] Parser warning: \n\t", e)
+		// 	}
+
+		fmt.Println("[+] The File in question is: \n" + "[+] \t" + pe.Filename)
 		fmt.Println("[+] " + pe.Filename + " has been loaded successfully ")
 
-		if err != nil {
-			fmt.Println(" There was a problem with the file, revert to the python script")
-			fmt.Println(" There was an error: %v", err)
-			os.Exit(2)
-		}
-
-	} else {
-		pe, err := pefile.NewPEFile(args[0])
-		if err != nil {
-			fmt.Println(" There was a problem with the file, revert to the python script")
-			fmt.Println(" There was an error: %v", err)
-			os.Exit(2)
-		}
-		fmt.Println("The File in question is: \n" + pe.Filename)
-
+		fmt.Println("[+] Starting Disassembler...")
 		malwareDisassembler.Disassembler(pe)
+
+		fmt.Println("[+] Starting StringsWrapper...")
 		malwareDisassembler.StringsWrapper(pe)
 	}
 }
