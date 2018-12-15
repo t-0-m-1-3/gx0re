@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	malwareDisassembler "github.com/t-0-m-1-3/gx0re/malwareDisassembler"
+
 	pefile "github.com/awsaba/pefile-go"
-	malwareDisassembler "github.com/t-0-m-1-3/malwareDisassembler"
 )
 
 func main() {
